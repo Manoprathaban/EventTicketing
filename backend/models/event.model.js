@@ -23,25 +23,26 @@ const eventSchema = new Schema(
     },
     imageUrl: {
       type: String,
-      default: "https://via.placeholder.com/150",
+      default: "https://via.placeholder.com/300x200.png?text=Event",
     },
     price: {
       type: Number,
       required: true,
+      min: 0,
     },
     category: {
       type: String,
       required: true,
-      enum: ["Music", "Sports", "Arts", "Business", "Food", "Other"],
     },
-    capacity: {
+    totalTickets: {
       type: Number,
-      default: 100,
+      required: true,
+      min: 1,
     },
     availableTickets: {
       type: Number,
       default: function () {
-        return this.capacity;
+        return this.totalTickets;
       },
     },
     createdBy: {
