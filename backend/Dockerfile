@@ -5,7 +5,8 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --build-from-source
+RUN npm install bcrypt --unsafe-perm
+
 
 
 COPY . .
